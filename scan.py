@@ -7,12 +7,12 @@ from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 app = FastAPI()
 
 # Load the model with custom objects
-model = load_model('model/MobileNet-Classification-7emotions-CNN.h5', compile=False)
+model = load_model('model/inimodelpk.h5', compile=False)
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
 # Function to convert label to emotion text
 def label_to_text(label):
-    emotion_label_to_text = {0: 'angry', 1: 'disgusted', 2: 'fearful', 3: 'happy', 4: 'neutral', 5: 'sad', 6: 'surprised'}
+    emotion_label_to_text = {0: 'Angry', 1: 'Disgust', 2: 'Fear', 3: 'Happy', 4: 'Neutral', 5: 'Sad', 6: 'Surprise'}
     return emotion_label_to_text[label]
 
 async def predict(file: UploadFile = File(...)):
